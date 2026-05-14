@@ -1,0 +1,14 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { categoryApi } from '../../api/categoryApi';
+
+export function useDeleteCategory() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => categoryApi.remove(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['categories'] });
+      queryClient.invalidateQueries({ queryKey: ['todos'] });
+    },
+  });
+}

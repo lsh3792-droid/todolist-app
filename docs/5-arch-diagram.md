@@ -135,6 +135,9 @@ erDiagram
 
 ## 주요 특징
 
+### API 문서
+- **Swagger UI:** `GET /api-docs/` — `swagger/swagger.json`을 기반으로 Swagger UI를 서빙한다. 개발 환경에서 `http://localhost:3000/api-docs/`로 접속하여 전체 API를 인터랙티브하게 테스트할 수 있다.
+
 ### 인증 (Authentication)
 - **Access Token:** JWT, 1시간 만료, Authorization 헤더로 전달
 - **Refresh Token:** JWT, 7일 만료, 로그인 응답 바디로 수신 → Zustand 메모리 저장 → 재발급 시 요청 바디로 전송

@@ -1,0 +1,47 @@
+.bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.select,
+.dateInput {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  padding: var(--space-2) var(--space-3);
+  font-size: 13px;
+  outline: none;
+}
+
+.select:focus,
+.dateInput:focus {
+  border-color: var(--color-primary);
+}
+
+.dateSep {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.resetBtn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  padding: var(--space-2) var(--space-3);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.resetBtn:hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+}

@@ -1,0 +1,55 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.name {
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.badge {
+  font-size: 11px;
+  background: var(--color-surface-raised);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-full);
+  padding: 2px var(--space-2);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.actionBtn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  padding: var(--space-1) var(--space-2);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.actionBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.actionBtn:not(:disabled):hover {
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+}
+
+.deleteBtn:not(:disabled):hover {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+  background: rgba(242, 139, 130, 0.1);
+}

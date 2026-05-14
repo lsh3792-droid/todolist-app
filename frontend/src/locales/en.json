@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "todos": "Todo List",
+    "categories": "Categories",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "loginPrompt": "Don't have an account?",
+    "registerPrompt": "Already have an account?",
+    "emailPlaceholder": "example@email.com",
+    "passwordPlaceholder": "8+ characters",
+    "namePlaceholder": "John Doe",
+    "errors": {
+      "invalidEmail": "Please enter a valid email address.",
+      "passwordTooShort": "Password must be at least 8 characters.",
+      "nameRequired": "Please enter your name.",
+      "loginFailed": "Invalid email or password.",
+      "registerFailed": "An error occurred during registration.",
+      "emailConflict": "This email is already in use."
+    }
+  },
+  "todo": {
+    "title": "Todo List",
+    "add": "+ Add Todo",
+    "addModal": "Add Todo",
+    "editModal": "Edit Todo",
+    "empty": "No todos found.",
+    "fields": {
+      "title": "Title",
+      "titlePlaceholder": "Todo title",
+      "description": "Description (optional)",
+      "descriptionPlaceholder": "Details",
+      "category": "Category",
+      "categoryPlaceholder": "Select category",
+      "startDate": "Start Date",
+      "dueDate": "Due Date"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "submit": "Add",
+      "update": "Update"
+    },
+    "errors": {
+      "titleRequired": "Please enter a title.",
+      "categoryRequired": "Please select a category.",
+      "startDateRequired": "Please enter a start date.",
+      "dueDateRequired": "Please enter a due date.",
+      "dueDateInvalid": "Due date must be after the start date."
+    },
+    "filter": {
+      "allCategories": "All Categories",
+      "all": "All",
+      "incomplete": "Incomplete",
+      "complete": "Complete",
+      "reset": "Reset"
+    },
+    "confirm": {
+      "delete": "Delete this todo?"
+    },
+    "ariaLabel": {
+      "toggleComplete": "Toggle complete: {{title}}"
+    }
+  },
+  "category": {
+    "title": "Category Management",
+    "addTitle": "Add Category",
+    "defaultSection": "Default Categories",
+    "customSection": "Custom Categories",
+    "empty": "No custom categories yet.",
+    "loading": "Loading...",
+    "badge": "Default",
+    "namePlaceholder": "Category name",
+    "actions": {
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "nameRequired": "Please enter a category name.",
+      "conflict": "A category with this name already exists.",
+      "addFailed": "Failed to add category.",
+      "deleteFailed": "Failed to delete category.",
+      "hasTodos": "Cannot delete: this category has linked todos.",
+      "isDefault": "Default categories cannot be deleted."
+    },
+    "confirm": {
+      "delete": "Delete this category?"
+    },
+    "ariaLabel": {
+      "edit": "Edit category",
+      "delete": "Delete category",
+      "filter": "Filter by category"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": {
+      "title": "Profile",
+      "email": "Email",
+      "name": "Name",
+      "save": "Save Name",
+      "updated": "Updated successfully.",
+      "updateFailed": "Failed to update.",
+      "nameRequired": "Please enter your name."
+    },
+    "password": {
+      "title": "Change Password",
+      "current": "Current Password",
+      "new": "New Password",
+      "confirm": "Confirm New Password",
+      "save": "Change Password",
+      "changed": "Password changed successfully.",
+      "changeFailed": "Failed to change password.",
+      "errors": {
+        "currentRequired": "Please enter your current password.",
+        "newTooShort": "New password must be at least 8 characters.",
+        "mismatch": "Passwords do not match.",
+        "wrongCurrent": "Current password is incorrect."
+      }
+    },
+    "danger": {
+      "title": "Delete Account",
+      "description": "Deleting your account will permanently remove all your data.",
+      "button": "Delete Account",
+      "confirm": "Are you sure you want to delete your account? This action cannot be undone.",
+      "deleteFailed": "Failed to delete account."
+    }
+  },
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "appName": "TodoList"
+  },
+  "theme": {
+    "toLightMode": "Switch to Light Mode",
+    "toDarkMode": "Switch to Dark Mode"
+  }
+}

@@ -241,7 +241,6 @@ const useTodos = (filters: TodoFilters) => {
 **공통**
 - 변수·함수: camelCase (`userId`, `getTodos`, `isCompleted`)
 - 상수(변경 불가): UPPER_SNAKE_CASE (`JWT_EXPIRES_IN`, `MAX_TITLE_LENGTH`)
-- TypeScript 타입/인터페이스: PascalCase (`Todo`, `CreateTodoRequest`, `ApiResponse`)
 
 **백엔드 네이밍 패턴**
 
@@ -317,16 +316,23 @@ const useTodos = (filters: TodoFilters) => {
 
 ---
 
-### 3.4 TypeScript 사용 원칙
+### 3.4 언어 사용 원칙
+
+**백엔드: 순수 JavaScript (TypeScript 사용 안 함)**
+
+- 백엔드는 Node.js 기반 순수 JavaScript(`.js`)로 구현한다. TypeScript, ts-node, 트랜스파일 단계 없이 Node.js가 파일을 직접 실행한다.
+- 타입 정보가 필요한 경우 JSDoc 주석(`@param`, `@returns`)으로 명시한다.
+
+**프론트엔드: TypeScript**
 
 1. **`any` 타입 사용 금지.** 불확실한 경우 `unknown`을 사용하고 타입 가드를 적용한다.
 2. **타입 정의 위치 규칙:**
-   - 프론트엔드 공유 타입: `src/types/` 디렉토리의 도메인별 파일 (`todo.types.ts`, `category.types.ts`, `auth.types.ts`)
+   - 공유 타입: `src/types/` 디렉토리의 도메인별 파일 (`todo.types.ts`, `category.types.ts`, `auth.types.ts`)
    - 특정 컴포넌트/훅에서만 사용하는 타입: 해당 파일 내 로컬 선언
    - API 요청/응답 타입: `src/api/` 레이어에 정의
 3. **`interface` vs `type`:** 도메인 엔티티는 `interface`, 유니온/교차 타입은 `type alias`를 사용한다.
-4. **백엔드는 JavaScript(Node.js)로 구현하며 JSDoc으로 타입을 명시한다.** 프론트엔드는 TypeScript를 사용하고, 백엔드는 순수 JavaScript로 구현하되 JSDoc 주석으로 주요 함수의 파라미터·반환값 타입을 명시한다.
-5. **`strict` 모드 활성화.** `tsconfig.json`에서 `"strict": true`를 설정하여 암묵적 any, null 체크를 강제한다.
+4. **`strict` 모드 활성화.** `tsconfig.json`에서 `"strict": true`를 설정하여 암묵적 any, null 체크를 강제한다.
+5. **타입/인터페이스 이름:** PascalCase (`Todo`, `CreateTodoRequest`, `ApiResponse`)
 
 ---
 
@@ -559,7 +565,8 @@ const asyncHandler = (fn) => (req, res, next) => {
 
 **주의 사항:**
 - 로그에 비밀번호, Access Token, Refresh Token 값을 절대 포함하지 않는다.
-- `console.log`를 직접 사용하지 않는다. 모든 로그는 `morgan` 또는 정의된 로거를 통해 출력한다.
+- HTTP 요청/응답 로그는 `morgan`을 통해 출력한다.
+- Controller 레이어의 주요 처리 지점(요청 수신, 완료)은 `console.log`로 기록한다. 로그 포맷: `[도메인] 동작 - 주요 식별자`.
 
 ---
 
@@ -572,7 +579,7 @@ Node.js + Express + pg 기준, Controller-Service-Repository 패턴을 적용한
 ```plaintext
 backend/
 ├── src/
-│   ├── app.js                        # Express 앱 설정, 미들웨어 등록
+│   ├── app.js                        # Express 앱 설정, 미들웨어 등록, Swagger UI(/api-docs) 마운트
 │   ├── server.js                     # HTTP 서버 시작 진입점
 │   │
 │   ├── config/
@@ -590,13 +597,13 @@ backend/
 │   │
 │   ├── routes/
 │   │   ├── index.js                  # 라우트 통합 등록 (/api/auth, /api/todos 등)
-│   │   ├── authRoutes.js             # POST /auth/register, /auth/login, /auth/logout, /auth/refresh
+│   │   ├── authRoutes.js             # POST /auth/register, /auth/login, /auth/refresh
 │   │   ├── userRoutes.js             # GET/PATCH/DELETE /users/me
 │   │   ├── todoRoutes.js             # CRUD /todos, /todos/:id
 │   │   └── categoryRoutes.js         # CRUD /categories, /categories/:id
 │   │
 │   ├── controllers/
-│   │   ├── authController.js         # register, login, logout, refresh
+│   │   ├── authController.js         # register, login, refreshToken
 │   │   ├── userController.js         # getMe, updateMe, deleteMe
 │   │   ├── todoController.js         # createTodo, getTodos, getTodoById, updateTodo, deleteTodo
 │   │   └── categoryController.js     # createCategory, getCategories, updateCategory, deleteCategory
