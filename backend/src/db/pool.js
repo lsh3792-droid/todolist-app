@@ -1,6 +1,12 @@
 const { Pool } = require('pg');
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl:
+    process.env.NODE_ENV === 'production'
+      ? { rejectUnauthorized: false }
+      : false,
+});
 
 /**
  * DB 연결을 검증한다. 실패 시 에러 로깅 후 프로세스를 종료한다.
