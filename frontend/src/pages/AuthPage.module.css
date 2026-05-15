@@ -18,6 +18,14 @@
   gap: var(--space-4);
 }
 
+.appTitle {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
 .link {
   font-size: 13px;
   color: var(--color-text-secondary);
