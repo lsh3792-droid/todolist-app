@@ -9,11 +9,13 @@ export function useRegister() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const setAuth = useAuthStore((s) => s.setAuth);
+  const setAccessToken = useAuthStore((s) => s.setAccessToken);
 
   return useMutation({
     mutationFn: (data: RegisterRequest) => authApi.register(data),
     onSuccess: async (res) => {
       const { accessToken, refreshToken } = res.data;
+      setAccessToken(accessToken);
       const meRes = await userApi.getMe();
       const { id, name, email } = meRes.data;
       setAuth(accessToken, refreshToken, { id, name, email });

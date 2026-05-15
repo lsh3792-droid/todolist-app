@@ -1,5 +1,10 @@
+const rawOrigin = process.env.CORS_ALLOWED_ORIGIN ?? '';
+const parsedOrigin = rawOrigin.includes(',')
+  ? rawOrigin.split(',').map((o) => o.trim())
+  : rawOrigin;
+
 const corsOptions = {
-  origin: process.env.CORS_ALLOWED_ORIGIN,
+  origin: parsedOrigin,
   methods: process.env.CORS_METHODS
     ? process.env.CORS_METHODS.split(',').map((m) => m.trim())
     : ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
